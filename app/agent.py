@@ -5,8 +5,9 @@ from time_tool import get_time
 
 DECISION_PROMPT = open("prompts/system.txt").read()
 
+
 def run_agent(user_input: str) -> str:
-     """
+    """
     Orchestrates the agent flow by deciding whether to use a tool or answer directly.
 
     Sends the user input to a decision-only LLM prompt, executes the selected tool
@@ -19,16 +20,21 @@ def run_agent(user_input: str) -> str:
 
     decision = safe_json_load(decision_raw)
 
-    if decision["action"] == "calculator":
+    if decision is None:
+        print("Invalid JSON response, answering directly")
+        return call_llm(user_input)
+
+    if decision.get("action") == "calculator":
         print("Using calculator tool")
         return f"The result is: {calculate(decision['expression'])}"
 
-    if decision["action"] == "time_tool":
+    if decision.get("action") == "time_tool":
         print("Using time tool")
         return get_time(decision["location"])
 
     print("Answering directly")
     return call_llm(user_input)
+
 
 def safe_json_load(text: str) -> dict | None:
     """
