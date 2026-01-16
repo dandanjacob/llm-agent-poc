@@ -199,6 +199,7 @@ To extend the agent with new tools, follow these steps:
 1. The calculator is implemented as a local Python function using the standard library, ensuring cross-platform compatibility and avoiding OS-specific commands or external services.
 2. The LLM model answers better when asked in English, so the prompt and interactions are in English. Portuguese questions may be answered incorrectly.
 3. Some `make` commands may not work as expected on Windows systems due to differences in shell environments. These commands were designed to work on Linux systems. Please, if you use Windows, adapt the commands accordingly. See the `Makefile` file to check the commands.
+4. An current limitationof this model is about questions that mixes calculation with non-numeric context. For example, if you ask "What is white + black?" the model may not choose the calculator tool, even though the correct answer is "white + black = gray". This can be improved in future iterations.
 
 # Improvements to Be Made
 1. We know that sometimes AI can make mistakes, but if you ask the same thing again it may get it right. So we can implement a retry mechanism for the LLM calls.
