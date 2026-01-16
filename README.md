@@ -1,5 +1,8 @@
 # LLM Agent POC – Tool-Aware Assistant
 
+## Author: Daniel Jacob Tonn
+## Email: danieljt.djt@gmail.com
+
 This project is a **proof of concept (POC)** of an AI assistant capable of **autonomously deciding** when to respond directly to a question or when to use an **external tool (calculator, time tool)** to obtain an accurate answer.
 
 The main objective is to demonstrate:
@@ -28,7 +31,7 @@ The decision is made by the model via a **controlled prompt**, returning a struc
 ---
 
 ## Project Structure
-
+```
 llm-agent-poc/
 ├── app/
 │ ├── main.py # Application entry point
@@ -45,7 +48,7 @@ llm-agent-poc/
 ├── .gitignore 
 ├── Makefile
 └── README.md
-
+```
 
 ### File Descriptions
 
@@ -109,12 +112,12 @@ Create a virtual environment (optional) and install dependencies:
 
 At the root of the project:
 
-python app/main.py
+```make start```
 
 Type questions in the terminal.  
 To exit, use:
 
-exit
+```exit```
 
 ---
 
